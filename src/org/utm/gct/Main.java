@@ -14,8 +14,14 @@ public class Main {
         }
         File cacheFile = new File(args[1]);
         String filename = cacheFile.getName().split(".bin")[0];
-        GradleCacheTool gct = new GradleCacheTool(filename);
-        // todo version (CacheLayout)
+        String version = VersionManager.getVersionByPath(cacheFile.getAbsolutePath());
+        GradleCacheTool gct;
+        if (version.equals("2.0")) {
+            gct = new org.utm.gct.v2_0.GCTImpl(filename);
+        } else {
+            System.out.println("Unknown gradle version!");
+            return;
+        }
 
         Map<String, String> options = new HashMap<>();
         for (int i = 2; i < args.length; ++i) {
