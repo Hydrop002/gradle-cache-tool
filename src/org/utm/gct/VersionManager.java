@@ -12,6 +12,8 @@ public class VersionManager {
 
     static {  // CacheLayout
         metadataMap.put("2.12", "2.0");
+        metadataMap.put("2.15", "2.7");
+        metadataMap.put("2.16", "2.14");
     }
 
     public static String getVersionByPath(String filepath) {
